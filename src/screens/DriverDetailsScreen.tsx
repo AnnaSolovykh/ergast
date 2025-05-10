@@ -55,7 +55,7 @@ const DriverDetailsScreen = () => {
       <Text>
         Racer details:{' '}
         <Text
-          style={{ color: 'blue', textDecorationLine: 'underline' }}
+          style={styles.link}
           onPress={() => Linking.openURL(driver.url)}
         >
           {driver.url}
@@ -69,6 +69,10 @@ const styles = StyleSheet.create({
   container: { padding: 16 },
   error: { color: 'red', marginTop: 50, textAlign: 'center' },
   name: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
 });
 
 export default DriverDetailsScreen;
