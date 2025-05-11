@@ -21,7 +21,7 @@ export const fetchDrivers = createAsyncThunk<
     const total = parseInt(response.data.MRData.total, 10);
     return { drivers: data, total };
   } catch (error: unknown) {
-    return rejectWithValue('Ошибка загрузки гонщиков');
+    return rejectWithValue('Error loading data');
   }
 });
 

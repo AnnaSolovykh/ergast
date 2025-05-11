@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import DriverDetailsScreen from './src/screens/DriverDetailsScreen';
 import DriversScreen from './src/screens/DriversScreen';
 import { persistor, store } from './src/store/store';
+import RacesScreen from './src/screens/RacesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Drivers" component={DriversScreen} />
           <Stack.Screen name="DriverDetails" component={DriverDetailsScreen} />
+          <Stack.Screen name="Races" component={RacesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       </PersistGate>

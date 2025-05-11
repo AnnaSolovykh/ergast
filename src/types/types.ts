@@ -1,6 +1,7 @@
 export type RootStackParamList = {
   Drivers: undefined;
   DriverDetails: { driverId: string };
+  Races: { driverId: string };
 };
 
 export type Driver = {
@@ -10,6 +11,12 @@ export type Driver = {
   dateOfBirth: string;
   nationality: string;
   url: string;
+};
+
+export type Race = {
+  raceName: string;
+  round: string;
+  date: string;
 };
 
 export type DriversState = {
