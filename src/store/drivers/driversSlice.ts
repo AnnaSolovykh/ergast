@@ -45,11 +45,16 @@ const driversSlice = createSlice({
       })
       .addCase(fetchDrivers.fulfilled, (state, action) => {
         state.loading = false;
-        state.list = [...state.list, ...action.payload.drivers];
-        state.total = action.payload.total;
-        state.offset = state.list.length;
-      })
 
+        const allDrivers = [...state.list, ...action.payload.drivers];
+        const uniqueDrivers = Array.from(
+          new Map(allDrivers.map(driver => [driver.driverId, driver])).values(),
+        );
+
+        state.list = uniqueDrivers;
+        state.total = action.payload.total;
+        state.offset += action.payload.drivers.length;
+      })
       .addCase(fetchDrivers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;

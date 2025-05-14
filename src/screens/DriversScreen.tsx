@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -25,14 +25,11 @@ const DriversScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList, 'Drivers'>>();
 
-  const hasFetched = useRef(false);
-
   useEffect(() => {
-    if (!hasFetched.current) {
+    if (list.length === 0) {
       dispatch(fetchDrivers(0));
-      hasFetched.current = true;
     }
-  }, [dispatch]);
+  }, [dispatch, list.length]);
 
   const loadMore = () => {
     if (!loading && list.length < total) {
@@ -63,7 +60,7 @@ const DriversScreen = () => {
       ) : (
         <FlatList
           data={list}
-          keyExtractor={(item, index) => `${item.driverId}-${index}`}
+          keyExtractor={item => item.driverId}
           renderItem={renderItem}
           onEndReached={loadMore}
           onEndReachedThreshold={0.5}
